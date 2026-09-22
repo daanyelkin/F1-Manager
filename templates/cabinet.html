@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — F1 Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <a href="/" class="logo">F1<span>MANAGER</span></a>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/race">Последняя гонка</a>
+        <a href="/driver">Гонщик</a>
+        <a href="/results">Результаты</a>
+        <a href="/championship">Чемпионат</a>
+        <a href="/cabinet">Кабинет</a>
+        <a href="/logout">Выйти</a>
+    </nav>
+</header>
+
+<main class="page narrow">
+    <p class="eyebrow">PERSONAL CABINET</p>
+    <h1>Личный кабинет</h1>
+
+    <div class="cabinet-card">
+        <p class="muted">Вы вошли как</p>
+        <h2>{{ username }}</h2>
+        <p>Здесь позже можно будет хранить персональные настройки, любимых пилотов и другие данные пользователя.</p>
+        <a class="primary-btn" href="/logout">Выйти из аккаунта</a>
+    </div>
+</main>
+</body>
+</html>

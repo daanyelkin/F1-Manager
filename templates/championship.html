@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чемпионат — F1 Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <a href="/" class="logo">F1<span>MANAGER</span></a>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/race">Последняя гонка</a>
+        <a href="/driver">Гонщик</a>
+        <a href="/results">Результаты</a>
+        <a href="/championship">Чемпионат</a>
+        {% if session.get('username') %}
+            <a href="/cabinet">Кабинет</a>
+            <a href="/logout">Выйти</a>
+        {% else %}
+            <a href="/login">Войти</a>
+            <a href="/register">Регистрация</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main class="page">
+    <p class="eyebrow">DRIVERS CHAMPIONSHIP</p>
+    <h1>Чемпионат пилотов</h1>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Пилот</th>
+                    <th>Команда</th>
+                    <th>Очки</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for driver in drivers %}
+                <tr>
+                    <td class="position">{{ driver.position }}</td>
+                    <td>{{ driver.Driver.givenName }} {{ driver.Driver.familyName }}</td>
+                    <td>{{ driver.Constructors[0].name }}</td>
+                    <td><b>{{ driver.points }}</b></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

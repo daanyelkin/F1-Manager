@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка — F1 Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="page narrow">
+    <p class="eyebrow">ERROR</p>
+    <h1>Что-то пошло не так</h1>
+    <div class="error">{{ message }}</div>
+    <a class="primary-btn" href="/">Вернуться на главную</a>
+</main>
+</body>
+</html>

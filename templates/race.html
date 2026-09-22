@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Последняя гонка — F1 Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <a href="/" class="logo">F1<span>MANAGER</span></a>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/race">Последняя гонка</a>
+        <a href="/driver">Гонщик</a>
+        <a href="/results">Результаты</a>
+        <a href="/championship">Чемпионат</a>
+        {% if session.get('username') %}
+            <a href="/cabinet">Кабинет</a>
+            <a href="/logout">Выйти</a>
+        {% else %}
+            <a href="/login">Войти</a>
+            <a href="/register">Регистрация</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main class="page">
+    <p class="eyebrow">LAST RACE</p>
+    <h1>{{ race.raceName }}</h1>
+    <p class="muted">{{ race.date }} · {{ race.Circuit.circuitName }}</p>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Пилот</th>
+                    <th>Команда</th>
+                    <th>Очки</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in race.Results %}
+                <tr>
+                    <td class="position">{{ result.position }}</td>
+                    <td>{{ result.Driver.givenName }} {{ result.Driver.familyName }}</td>
+                    <td>{{ result.Constructor.name }}</td>
+                    <td>{{ result.points }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

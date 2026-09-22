@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <a href="/" class="logo">F1<span>MANAGER</span></a>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/race">Последняя гонка</a>
+        <a href="/driver">Гонщик</a>
+        <a href="/results">Результаты</a>
+        <a href="/championship">Чемпионат</a>
+        {% if session.get('username') %}
+            <a href="/cabinet">Кабинет</a>
+            <a href="/logout">Выйти</a>
+        {% else %}
+            <a href="/login">Войти</a>
+            <a href="/register">Регистрация</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main class="hero">
+    <div class="hero-text">
+        <p class="eyebrow">FORMULA 1 DATA</p>
+        <h1>F1<br><span>MANAGER</span></h1>
+        <p class="subtitle">Результаты гонок, пилоты и чемпионат — данные получаются напрямую из F1 API.</p>
+        <a class="primary-btn" href="/race">Смотреть последнюю гонку →</a>
+    </div>
+
+    <div class="hero-card">
+        <div class="card-label">LIVE DATA</div>
+        <div class="speed">01</div>
+        <p>Последняя гонка</p>
+        <a href="/race">Открыть результаты</a>
+    </div>
+</main>
+
+<section class="features">
+    <a href="/race" class="feature">
+        <span>01</span>
+        <h2>Последняя гонка</h2>
+        <p>Позиции, очки, команда и трасса.</p>
+    </a>
+    <a href="/driver" class="feature">
+        <span>02</span>
+        <h2>Пилоты</h2>
+        <p>Найди гонщика по имени или фамилии.</p>
+    </a>
+    <a href="/results" class="feature">
+        <span>03</span>
+        <h2>Результаты</h2>
+        <p>История выступлений выбранного пилота.</p>
+    </a>
+    <a href="/championship" class="feature">
+        <span>04</span>
+        <h2>Чемпионат</h2>
+        <p>Текущая таблица пилотов.</p>
+    </a>
+</section>
+</body>
+</html>
